@@ -9,14 +9,14 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: "/mnt/TrueNas Server/Stockage_TrueNas/snapcamera/storage"
+      device: /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/storage
 
   db:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: "/mnt/TrueNas Server/Stockage_TrueNas/snapcamera/db"
+      device: /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/db
 
 #############################################
 # 2) On redéfinit les deux montages SSL du service webproxy
@@ -24,5 +24,5 @@ volumes:
 services:
   webproxy:
     volumes:
-      - "/mnt/TrueNas Server/Stockage_TrueNas/snapcamera/ssl/studio-app.snapchat.com.crt:/etc/ssl/certs/studio-app.snapchat.com.crt:ro"
-      - "/mnt/TrueNas Server/Stockage_TrueNas/snapcamera/ssl/studio-app.snapchat.com.key:/etc/ssl/private/studio-app.snapchat.com.key:ro"
+      - /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/ssl/studio-app.snapchat.com.crt:/etc/ssl/certs/studio-app.snapchat.com.crt:ro
+      - /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/ssl/studio-app.snapchat.com.key:/etc/ssl/private/studio-app.snapchat.com.key:ro
