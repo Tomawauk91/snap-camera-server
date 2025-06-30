@@ -1,30 +1,27 @@
+# compose.override.yml
 version: "3.9"
 
-#############################################
-# 1) On remplace les volumes nommés par des bind-mounts
-#############################################
+#########################
+# 1) On remappe les volumes
+#########################
 volumes:
-  storage:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/storage
-
   db:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/db
+      device: "/mnt/TrueNas Server/Stockage_TrueNas/SnapServer/db"
 
+  storage:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "/mnt/TrueNas Server/Stockage_TrueNas/SnapServer/storage"
 
-#############################################
-# 2) On redéfinit les deux montages SSL du service webproxy
-#############################################
-
-services:
-  webproxy:
-    volumes:
-      - /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/ssl/studio-app.snapchat.com.crt:/etc/ssl/certs/studio-app.snapchat.com.crt:ro
-      - /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/ssl/studio-app.snapchat.com.key:/etc/ssl/private/studio-app.snapchat.com.key:ro
+  ssl:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "/mnt/TrueNas Server/Stockage_TrueNas/SnapServer/ssl"
