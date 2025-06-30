@@ -1,25 +1,21 @@
-# compose.override.yml
 version: "3.9"
 
-#########################
-# 1) On remappe les volumes
-#########################
 volumes:
-  db:
+  mysql-db:                               # ← nom exact du volume dans le compose d’origine
     driver: local
     driver_opts:
       type: none
       o: bind
       device: "/mnt/TrueNas Server/Stockage_TrueNas/SnapServer/db"
 
-  storage:
+  server-storage:                         # volume « storage » du compose (name: server-storage)
     driver: local
     driver_opts:
       type: none
       o: bind
       device: "/mnt/TrueNas Server/Stockage_TrueNas/SnapServer/storage"
 
-  ssl:
+  ssl:                                    # volume « ssl » du compose (name: ssl)
     driver: local
     driver_opts:
       type: none
