@@ -1,5 +1,32 @@
+# compose.override.yml
+version: "3.9"
+
+#############################################
+# 1) Bind-mounts pour les volumes nommés
+#############################################
+volumes:
+  storage:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/tank/apps/snapcamera/storage
+
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/tank/apps/snapcamera/db
+
+
+#############################################
+# 2) SSL – remplace les montages relatifs
+#############################################
 services:
-  snapcamera:
+  webproxy:
     volumes:
-      - /mnt/tank/apps/snapcamera/lenses:/var/lib/snapcamera
-      - /mnt/tank/apps/snapcamera/ssl:/ssl
+      # on garde les autres volumes du compose d’origine
+      # et on redéfinit seulement ceux du dossier ssl
+      - /mnt/tank/apps/snapcamera/ssl/studio-app.snapchat.com.crt:/etc/ssl/certs/studio-app.snapchat.com.crt:ro
+      - /mnt/tank/apps/snapcamera/ssl/studio-app.snapchat.com.key:/etc/ssl/private/studio-app.snapchat.com.key:ro
