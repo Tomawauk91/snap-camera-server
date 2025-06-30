@@ -18,9 +18,11 @@ volumes:
       o: bind
       device: /mnt/TrueNas\040Server/Stockage_TrueNas/snapcamera/db
 
+
 #############################################
 # 2) On redéfinit les deux montages SSL du service webproxy
 #############################################
+
 services:
   webproxy:
     volumes:
