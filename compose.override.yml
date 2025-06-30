@@ -1,0 +1,5 @@
+services:
+  snapcamera:
+    volumes:
+      - /mnt/tank/apps/snapcamera/lenses:/var/lib/snapcamera
+      - /mnt/tank/apps/snapcamera/ssl:/ssl
